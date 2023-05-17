@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>클래식기타 커뮤니티</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/board_left.css">
-    <link rel="stylesheet" type="text/css" href="css/board_view_main.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/board_left.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/board_view_main.css">
 </head>
 <body>
   <div id="wrap">
@@ -67,25 +68,37 @@
         <img src="/resources/img/comm.gif">
         <h2 id="board_title">자유게시판</h2>
         <div id="view_title_box">
-          <span id="boardTitle">까스통의 선물인 보드카가 정말 독하네요!!!</span>
-          <span id="info">루바토 | 조회수 : 208 | 2022-10-05 (09:21)</span>
+          <span id="boardTitle">${boardDto.btitle }</span>
+          <span id="info">${boardDto.bname } | 조회수 : ${boardDto.bhit } | ${boardDto.bdate }</span>
         </div>
         <p id="view_content">
-          까스통님 고맙습니다. <br>
-          까스통님 고맙습니다. <br>
-          까스통님 고맙습니다. <br>
-          까스통님 고맙습니다. <br>
-          까스통님 고맙습니다. <br>
+          ${boardDto.bcontent }
         </p>
+        <table border="1" cellpadding="0" cellspacing="0" width="750">
+        	<c:forEach items="${replyList }" var="replyDto">
+        	<tr>
+        		<td align="center">${replyDto.rid }</td>
+        		<td width="70%">${replyDto.rcontent }<br><br>${replyDto.rdate }</td>
+        		<td align="center">
+        			<input type="button" value="삭제" onclick="spript:window.location.href='replyDelete?rnum=${replyDto.rnum}'">
+        		</td>
+        	</tr>
+        	</c:forEach>
+        </table>
+        
+        
+        <form action="reply_write">
+        <input type="hidden" name="rorinum" value="${boardDto.bnum }">
         <div id="comment_box">
           <img id="title_comment" src="/resources/img/title_comment.gif">
-          <textarea></textarea>
-          <img id="ok_ripple" src="/resources/img/ok_ripple.gif">
+          <textarea name="rcontent"></textarea>
+          <input type="image" src="/resources/img/ok_ripple.gif" id="ok_ripple">          
         </div>
+        </form>
         <div id="buttons">
           <a href="#"><img src="/resources/img/delete.png"></a>
-          <a href="board_list.html"><img src="/resources/img/list.png"></a>
-          <a href="board_write.html"><img src="/resources/img/write.png"></a>
+          <a href="board_list"><img src="/resources/img/list.png"></a>
+          <a href="board_write"><img src="/resources/img/write.png"></a>
         </div>
       </section> <!-- section main 끝 -->
     </main>

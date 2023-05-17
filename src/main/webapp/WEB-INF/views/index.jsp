@@ -57,7 +57,7 @@
     </aside>
     <main>
       <section id="main">
-        <img src="img/main_img.png">
+        <img src="/resources/img/main_img.png">
         <section id="notice_free_youtube"> <!-- 공지사항/자유게시판/유투브 시작 -->
           <article id="notice"> <!-- 공지사항 -->
             <div class="latest_title">
@@ -133,7 +133,7 @@
           </article><!-- 유투브 끝 -->
         </section> <!-- 공지사항/자유게시판/유투브 끝 -->
         <section id="gallery"> <!-- 갤러리 시작 -->
-          <img src="img/latest4.gif">
+          <img src="/resources/img/latest4.gif">
           <div id="gallery_box"> <!-- gallery box 시작 -->
             <div id="gallery_list"> <!-- gallery list 시작 -->
               <div class="items">
