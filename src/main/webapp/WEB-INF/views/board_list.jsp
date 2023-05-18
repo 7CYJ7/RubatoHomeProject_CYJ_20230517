@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
+<!DOCTYPE html>  <!-- 위에 jstl 넣기 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

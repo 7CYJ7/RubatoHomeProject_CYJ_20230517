@@ -74,20 +74,32 @@
         <p id="view_content">
           ${boardDto.bcontent }
         </p>
+        
+        <p id="file_info">
+        	※ 첨부파일 :
+        	<a href="/resources/uploadfiles/${fileDto.filename }" download>${fileDto.fileoriname }</a>
+        </p>
+        <br>
+        <c:if test="${fileDto.fileextension  == 'jpg' or fileDto.fileextension  == 'png' or fileDto.fileextension  == 'gif' or fileDto.fileextension  == 'bmp'}">
+        	<br>
+        		<img width="300" src="/resources/uploadfiles/${fileDto.filename }">
+        	<br>
+        </c:if>
+        
         <table border="1" cellpadding="0" cellspacing="0" width="750">
         	<c:forEach items="${replyList }" var="replyDto">
         	<tr>
         		<td align="center">${replyDto.rid }</td>
         		<td width="70%">${replyDto.rcontent }<br><br>${replyDto.rdate }</td>
         		<td align="center">
-        			<input type="button" value="삭제" onclick="spript:window.location.href='replyDelete?rnum=${replyDto.rnum}'">
+        			<input type="button" value="삭제" onclick="spript:window.location.href='replyDelete?rnum=${replyDto.rnum}&rorinum=${boardDto.bnum }'">
         		</td>
         	</tr>
         	</c:forEach>
         </table>
         
         
-        <form action="reply_write">
+        <form action="reply_write" method="post">
         <input type="hidden" name="rorinum" value="${boardDto.bnum }">
         <div id="comment_box">
           <img id="title_comment" src="/resources/img/title_comment.gif">
@@ -96,7 +108,7 @@
         </div>
         </form>
         <div id="buttons">
-          <a href="#"><img src="/resources/img/delete.png"></a>
+          <a href="board_delete?bnum=${boardDto.bnum }"><img src="/resources/img/delete.png"></a>
           <a href="board_list"><img src="/resources/img/list.png"></a>
           <a href="board_write"><img src="/resources/img/write.png"></a>
         </div>
